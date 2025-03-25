@@ -43,7 +43,7 @@ def ingresar():
     for usuario in listRegistro:
         if usuario["email"] == email  and usuario["contraseña"] == password:
             print(f"Bienvenido {usuario["nombre"]} {usuario["apellido"]}")
-            2
+            
             
             if usuario["rol"] == "profesor":
                 print("----acesso al sistema de profesores ----- ")
