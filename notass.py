@@ -1,6 +1,6 @@
 ##global para que se pueda acceder a la lista de registro de cualquier parte del codigo
 listRegistro = [] ##lista de registro de usuarios
-
+notasR = [] ##lista de notas
 def registro():
     print("Por favor registrase ")
     
@@ -32,7 +32,9 @@ def registro():
     print(f"Usuario {nombre} {lasName} registrado con exito")
 
 def ingresar():
-    print("--------Iniciar sesion--------")
+    print("---------------------------")
+    print("--------Iniciar sesion-----")
+    print("---------------------------")
     email = input("Ingrese su email:  ")
     password = input("Ingrese su contraseña: ")
    
@@ -43,40 +45,93 @@ def ingresar():
     for usuario in listRegistro:
         if usuario["email"] == email  and usuario["contraseña"] == password:
             print(f"Bienvenido {usuario["nombre"]} {usuario["apellido"]}")
-            2
+            
             
             if usuario["rol"] == "profesor":
+                print("-------------------------------------------")
                 print("----acesso al sistema de profesores ----- ")
-                
-            elif usuario["rol"] == "estudiante":   
+                print("-------------------------------------------")
+                notasP()
+            elif usuario["rol"] == "estudiante": 
+                print("-------------------------------------------")  
                 print("----acesso al sistema de estudiantes ----- ")
-                 
+                print("-------------------------------------------") 
+                notasEst()
         else:
             print("Usuario o contraseña incorrecta")
             
+def notasP():
+  while True:  
+    print("---------------------------")
+    print("----Sistema de notas----")
+    print("---------------------------")
+    
+    print("1. para ingresar notas")
+    print("2. para ver notas")
+    print("3. para salir")
+    opcionMenu = input("Ingrese la opcion:  ")
+   
+   #menu para el ingreso de las notas 
+    if opcionMenu == "1":
+        cantidad=int(input("cuantas notas deseas ingresar"))
+        for i in range(cantidad):
+            nota=float(input("Ingrese la nota"))
+            notasR.append(nota)
+    
+    elif opcionMenu == "2":
+       if len(notasR)==0:
+           print("no hay notas registradas")
+       else:  
+         print("notas registrada con exito")  
+         for i,nota in enumerate(notasR , start=1): #enumera las notas 
+            print(f" nota {i}=  {nota}")
+    else:
+        print("saliendo del sistema")
+        break
+       
 
+       
+def notasEst():
+    while True:
+        print("ingrese la opcion")
+        print("1.ver notas ")
+        print("2.Salir ")
+        opcionEs= input("opcion: ")
 
+        if opcionEs =="1":
 
+            print("nota 1 =4.5")
+            print("nota 2 =3.5")
+            print("nota 3 =2.5")
+        else:
+            print("saliendo del sistema") 
+            break   
 
 opcionMenu =0 ##inicializar la variable
 rol=0
 ##creacion del sistema de notas 
 while opcionMenu != 3:
     print("Por favor seleccione una opcion.")
-    print("Bienvenido al sistema de notas.")
+    print("Bienvenido al sistema de notas.")  
+    print("-----------------------------")
     print("-----------------------------")
     print("1. para registrarse.")
     print("2. para ingresar.")
     print("3. para salir.")
-    opcionMenu = input("Ingrese la opcion:  ")
-    
+       
+    print("-----------------------------")
+    opcionMenu = input("Ingrese la opcion:  ")  
+    print("-----------------------------")
     ##menu para que ingrese i se registren
 
     if opcionMenu == "1":
         registro()
     elif opcionMenu == "2":
-        ingresar()
-        
+        if len(listRegistro) == 0:
+            print("No hay usuarios registrados. Por favor, regístrese primero.")
+        else:
+            ingresar()
+       
     elif opcionMenu == "3":
         print("Gracias por usar el sistema de notas. Hata luego")     
     else:
