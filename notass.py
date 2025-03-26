@@ -56,6 +56,7 @@ def ingresar():
                 print("-------------------------------------------")  
                 print("----acesso al sistema de estudiantes ----- ")
                 print("-------------------------------------------") 
+                notasEst()
         else:
             print("Usuario o contraseña incorrecta")
             
@@ -90,8 +91,21 @@ def notasP():
        
 
        
+def notasEst():
+    while True:
+        print("ingrese la opcion")
+        print("1.ver notas ")
+        print("2.Salir ")
+        opcionEs= input("opcion: ")
 
+        if opcionEs =="1":
 
+            print("nota 1 =4.5")
+            print("nota 2 =3.5")
+            print("nota 3 =2.5")
+        else:
+            print("saliendo del sistema") 
+            break   
 
 opcionMenu =0 ##inicializar la variable
 rol=0
